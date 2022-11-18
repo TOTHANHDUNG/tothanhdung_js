@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        /*
+            sap xep tang dang
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        arrNumber.sort((a,b)=> a-b)
+        console.log(arrNumber);
+
+            sap xep giam dang
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        arrNumber.sort((a,b)=>b-a);
+        console.log(arrNumber);
+         
+            xoa phan tu cuoi cung
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var item = arrNumber.pop();
+        console.log(arrNumber);    
+
+            xoa phan tu dau tien
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var item = arrNumber.shift();
+        console.log(arrNumber);    
+
+            them 0 vao dau mang
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        arrNumber.unshift(0);
+        console.log(arrNumber);    
+
+            them 0 vao cuoi mang 
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        arrNumber.push(0);
+        console.log(arrNumber);
+
+            cat mang tu 0-5
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var arrNew = arrNumber.slice(0,6);
+        console.log(arrNew);
+
+            Chèn thêm số 100 vào vị trí thứ 5 của mảng
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        arrNumber.splice(5,0,100);
+        console.log(arrNumber);
+
+            Thay thế phần tử thứ 5 bằng số 100
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        arrNumber.splice(4,1,100);
+        console.log(arrNumber);
+
+            copy từ mảng arrNumber thành 1 mảng mới từ vị trí 5 đến hết
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var arrayNew = arrNumber.slice(5);
+        console.log(arrayNew);
+        
+            copy từ mảng arrNumber thành 1 mảng mới từ vị trí đầu tiên đến vị trí thứ 5
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var arrayNew = arrNumber.slice(0,5);
+        console.log(arrayNew);
+
+             Nối mảng arrNumber2 vào mảng arrNumber
+        var arrNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var arrNumber2 = [11, 22, 33, 44, 55];
+
+        console.log(arrNumber.concat(arrNumber2));
+
+        */
+
+        const students = [
+    {
+        id: 1,
+        name: "Dinh",
+        diachi: "hue"
+    },
+    {
+        id: 2,
+        name: "Nam",
+        diachi: "quang nam"
+    },
+    {
+        id: 3,
+        name: "Tan",
+        diachi: "da nang"
+    },
+    {
+        id: 4,
+        name: "Hung",
+        diachi: "hue"
+    },
+    {
+        id: 5,
+        name: "Tri",
+        diachi: "quang tri"
+    },
+    {
+        id: 6,
+        name: "Anh",
+        diachi: "hue"
+    },
+    {
+        id: 7,
+        name: "Binh",
+        diachi: "da nang"
+    }
+];
+
+    //Bai 1- Them sinh vien
+    var chon = prompt('Chon thao tac muon thuc hien:\n'
+    + '1. Xem danh sach sinh vien.\n'
+    + '2. Them sinh vien. \n'
+    + '3. Sua sinh vien. \n'
+    + '4. Xoa sinh vien. '
+    );
+
+    if(chon == 1 ){
+        console.log(students);
+    }else if(chon==2){
+        
+        var addname = prompt('Nhap ten sinh vien muon them:');
+        var adddiachi = prompt('Nhap dia chi sinh vien muon them:');
+        var add = {
+            id: students.length +1,
+            name: addname,
+            diachi: adddiachi
+        }
+        students.push(add);
+        console.log(students);
+    }else if(chon == 3){
+        var editId = prompt('Nhap ma sinh vien muon sua:');
+        var vitri = students.findIndex(function (student){
+            return student.id == editId;
+        })
+        if(vitri == -1){
+            alert('Ko tim thay sinh vien muon sua!');
+        }else{
+            var editSv = students.find(function (student){
+                return student.id == editId;
+            })
+
+            var editName = prompt('Nhap ten sinh vien muon sua:',editSv.name);
+            var editDiachi = prompt('Nhap dia chi sinh vien muon sua: ', editSv.diachi);
+
+            var student = {
+                id:Number(editId),
+                name: editName,
+                diachi:editDiachi
+            }
+            students.splice(vitri,1,student);
+        }
+        console.log(students);
+    }else if(chon==4){
+        var idDel = prompt('Nhap ma sinh vien muon xoa: ');
+        var delIndex = students.findIndex(function (student){
+            return student.id == idDel;
+        })
+        if(delIndex !=-1){
+            students.splice(delIndex,1);
+        }else{
+            alert('Khong tim thay sinh vien muon xoa!');
+        }
+        console.log(students);
+    }else{
+        alert('Error!')
+    }
+
+    </script>
+</body>
+</html>
